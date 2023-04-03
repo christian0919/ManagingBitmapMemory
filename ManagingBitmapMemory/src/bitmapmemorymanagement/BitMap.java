@@ -39,4 +39,19 @@ public class BitMap {
 		return positionArray;
 	}
 	
+	public void SetBit(int bitPosition,int positionArray) {
+		map[positionArray]= (byte) (map[positionArray] | specialBytes[bitPosition]);
+	}
+	
+	public void UnsetBit(int bitPosition,int positionArray) {
+		map[positionArray]= (byte) (map[positionArray] ^ specialBytes[bitPosition]);
+	}
+	
+	public void PrintMap() {
+		for(int i = 0 ; i < 128 ; i++) {
+			String binaryByte = String.format("%8s", Integer.toBinaryString(map[i] & 0xFF)).replace(' ', '0');
+			System.out.println(binaryByte);
+		}
+	}
+	
 }
