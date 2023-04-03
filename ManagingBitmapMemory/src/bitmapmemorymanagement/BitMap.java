@@ -1,13 +1,16 @@
 package bitmapmemorymanagement;
+import java.util.ArrayList;
 
 public class BitMap {
 
 	private byte[] map = new byte[128];
 	private byte specialBytes[]= {(byte)1,(byte)2,(byte)4,(byte)8,(byte)16,(byte)32,(byte)64,(byte) 128};
+	
+	private  ArrayList<ArrayList<Integer>> outer = new ArrayList<ArrayList<Integer>>();
+	private ArrayList<Integer> inner = new ArrayList<Integer>();        
 
 	public BitMap() {
 		InitializeMap();	
-
 	}
 
 	
@@ -54,10 +57,11 @@ public class BitMap {
 		}
 	}
 	
-	public void LookForHole(int holeSize) {
+	public int[] LookForHole(int holeSize) {
 		int check = 0;
 		int beginPosition = 0;
 		int index=0;
+		int[] ans= new int[2];
 		for(int i = 0 ; i < 128 ; i++) {
 			for (int j = 0 ; j < 8 ; j++) {
 				if(!BitState( j, i)) {
@@ -65,18 +69,22 @@ public class BitMap {
 					if(check==1) {
 						beginPosition=j;
 						index=i;
-						}
+					}
 					if(check == holeSize) {
 						System.out.println("beginPosition:"+beginPosition+" \nindex:"+index);
-						return;
+						ans[0] = beginPosition;
+						ans[1] = index;
+						return ans;
 					}
 				}else {
-
 					check = 0;
 				}
 			}
 		}
+		ans[0] = -1;
+		ans[1] = -1;
 		System.out.println("no hole finded");
+		return ans;
 	}
 	
 }
