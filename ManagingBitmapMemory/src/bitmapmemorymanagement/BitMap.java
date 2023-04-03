@@ -20,7 +20,6 @@ public class BitMap {
 	}
 	
 	private void InitializeMap(){
-		
 		for (int i = 0; i < map.length; i++) {
 			map[i] = (byte) 0;
 			/** Muestra los bits en forma binaria
@@ -28,7 +27,16 @@ public class BitMap {
 			System.out.println(binaryByte);
 			**/
 		}
-		
+	}
+	
+	public int LookForArrayPosition(int wantedBit){
+		int positionArray=0;
+		for( positionArray=0 ; positionArray <= 127 ; positionArray++){
+			if(  wantedBit >= 8*positionArray && wantedBit <= (8*(positionArray+1))-1 ) {
+				return positionArray;
+			}
+		}
+		return positionArray;
 	}
 	
 }

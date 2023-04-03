@@ -19,8 +19,7 @@ public class Main {
 	//check bitmap class
 		BitMap mapabits= new BitMap();
 		
-		System.out.println();
-		
+		System.out.println(mapabits.LookForArrayPosition(66));
 	}
 
 }
