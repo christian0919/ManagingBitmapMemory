@@ -54,4 +54,35 @@ public class BitMap {
 		}
 	}
 	
+	public void LookForHole(int holeSize) {
+		int check = 0;
+		int beginPosition = 0;
+		int index=0;
+		for(int i = 0 ; i < 128 ; i++) {
+			for (int j = 0 ; j < 8 ; j++) {
+				if(check == holeSize) {
+					System.out.println("beginPosition:"+beginPosition+" \n index:"+index);
+					return;
+				}
+				if(!BitState( j, i)) {
+					System.out.println(!BitState( j, i));
+					check ++;
+					if(holeSize==1) {
+						beginPosition=j;
+						index=i;
+						}
+					if(check == holeSize) {
+						System.out.println("beginPosition:"+beginPosition+" \n index:"+index);
+						return;
+					}
+					System.out.println("check"+check);
+				}else {
+					System.out.println(!BitState( j, i));
+					check = 0;
+				}
+			}
+		}
+		System.out.println("no hole finded");
+	}
+	
 }
