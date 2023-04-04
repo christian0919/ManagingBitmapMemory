@@ -87,4 +87,23 @@ public class BitMap {
 		return ans;
 	}
 	
+	public void AsingProcess(int sizeProcess){
+		int[] positionsHole = new int[2];
+		//positionsHole[0] = beginPosition;
+		//positionsHole[1] = index;
+		positionsHole = LookForHole(sizeProcess);
+		if(positionsHole[0] == -1) {
+			return;//Hole didn't found 
+		}else {//asign memory |||||||||||||| aun falta asignarlo en las listas
+			for(int i = 0 ; i < sizeProcess ; i++ ) {
+				//int bitPosition,int positionArray
+				SetBit(positionsHole[0] , positionsHole[1]);
+				positionsHole[0]++;
+				if(positionsHole[0] == 8) {
+					positionsHole[0]=0;
+					positionsHole[1]++;
+				}	
+			}
+		}
+	}
 }
