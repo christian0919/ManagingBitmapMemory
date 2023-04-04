@@ -87,7 +87,7 @@ public class BitMap {
 		return ans;
 	}
 	
-	public void AsingProcess(int sizeProcess){
+	public void AsingProcessBits(int sizeProcess){
 		int[] positionsHole = new int[2];
 		//positionsHole[0] = beginPosition;
 		//positionsHole[1] = index;

@@ -38,8 +38,11 @@ public class Main {
 		mapabits.PrintMap();
 		int[] ans=mapabits.LookForHole(3);
 		System.out.println(ans[0]+"|"+ans[1]);
-		mapabits.AsingProcess(9);
+		mapabits.AsingProcess(200);
 		mapabits.PrintMap();
+		ans=mapabits.LookForHole(500);
+		System.out.println(ans[0]+"|"+ans[1]);
+
 		System.out.println(mapabits.LookForArrayPosition(66));
 	}
 
