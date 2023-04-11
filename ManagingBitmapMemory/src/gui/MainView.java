@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import java.awt.Label;
 import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainView extends JFrame {
 
@@ -39,6 +41,18 @@ public class MainView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnDeleteProcess = new JButton("Eliminar Proceso");
+		btnDeleteProcess.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//Esta madre se va a encagar de Eliminar el proceso
+				
+				/*
+				 * EliminarProceso(String Name, int begin, int end)
+				 */
+				
+				
+			}
+		});
 		btnDeleteProcess.setBounds(431, 266, 134, 27);
 		contentPane.add(btnDeleteProcess);
 		
@@ -52,6 +66,7 @@ public class MainView extends JFrame {
 		contentPane.add(sliderSpeed);
 		
 		JComboBox comboBox = new JComboBox();
+
 		comboBox.setBounds(431, 232, 134, 26);
 		contentPane.add(comboBox);
 		
@@ -62,6 +77,17 @@ public class MainView extends JFrame {
 		contentPane.add(canvas);
 		
 		JButton btnCreateProcess = new JButton("Crear Proceso");
+		btnCreateProcess.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			//Esta madre se va a encargar de despachar memoria
+				/*
+				 *  DespacharProceso( Name, size){
+
+				 * 
+				 * */
+			}
+		});
 		btnCreateProcess.setBounds(431, 193, 134, 27);
 		contentPane.add(btnCreateProcess);
 		
