@@ -62,7 +62,7 @@ public class MainView extends JFrame {
 		sliderSpeed.setValue(1);
 		sliderSpeed.setMaximum(10);
 		sliderSpeed.setMinimum(1);
-		sliderSpeed.setBounds(431, 348, 134, 16);
+		sliderSpeed.setBounds(431, 347, 134, 16);
 		contentPane.add(sliderSpeed);
 		
 		JComboBox comboBox = new JComboBox();

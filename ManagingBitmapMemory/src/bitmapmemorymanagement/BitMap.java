@@ -1,13 +1,11 @@
 package bitmapmemorymanagement;
-import java.util.ArrayList;
 
 public class BitMap {
 
 	private byte[] map = new byte[128];
 	private byte specialBytes[]= {(byte)1,(byte)2,(byte)4,(byte)8,(byte)16,(byte)32,(byte)64,(byte) 128};
 	
-	private  ArrayList<ArrayList<Integer>> outer = new ArrayList<ArrayList<Integer>>();
-	private ArrayList<Integer> inner = new ArrayList<Integer>();        
+    
 
 	public BitMap() {
 		InitializeMap();	
