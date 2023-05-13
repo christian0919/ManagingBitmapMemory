@@ -54,7 +54,7 @@ public class Main {
 		listProcess.addProcessToList("Raul","24","60");
 
 		listProcess.printProcessList();
-		listProcess.deleteProcessFromList("Raul");
+		listProcess.deleteProcessFromList("Ramon");
 		listProcess.printProcessList();
 	}
 

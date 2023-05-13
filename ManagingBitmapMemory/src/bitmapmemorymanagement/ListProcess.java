@@ -24,10 +24,11 @@ public class ListProcess {
 		for(int i = 0; i < processList.size(); i++ ) {
 			if(name == processList.get(i)[0]){
 				processList.remove(i);
-				System.out.println("deleted");
+				System.out.println("Deleted");
 				break;
 			}
 		}
+		System.out.println("No deleted");
 	}
 	public void deleteAllList(){
 		processList.clear();
