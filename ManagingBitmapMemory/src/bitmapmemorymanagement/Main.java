@@ -11,11 +11,10 @@ public class Main {
 	
 	public static void main(String[] args) {	
 	//Launch view
-		/**
+
 		MainView frame = new MainView();
 		frame.setVisible(true);
-		**/
-		
+
 	//check bitmap class
 		BitMap mapabits= new BitMap();
 		// bitPosition, positionArray
@@ -56,6 +55,7 @@ public class Main {
 		listProcess.printProcessList();
 		listProcess.deleteProcessFromList("Ramon");
 		listProcess.printProcessList();
+
 	}
 
 }
