@@ -36,14 +36,26 @@ public class Main {
 		mapabits.SetBit(6, 1);
 		mapabits.SetBit(7, 1);
 		mapabits.PrintMap();
-		int[] ans=mapabits.LookForHole(3);
+		int[] ans = mapabits.LookForHole(3);
 		System.out.println(ans[0]+"|"+ans[1]);
-		mapabits.AsingProcess(200);
+		mapabits.AsingProcessBits(200);
 		mapabits.PrintMap();
-		ans=mapabits.LookForHole(500);
+		ans = mapabits.LookForHole(500);
 		System.out.println(ans[0]+"|"+ans[1]);
 
 		System.out.println(mapabits.LookForArrayPosition(66));
+		
+		ListProcess listProcess = new ListProcess();
+		//(name)(begin)(size)
+		listProcess.addProcessToList("Angel","1","23");
+
+		listProcess.printProcessList();
+
+		listProcess.addProcessToList("Raul","24","60");
+
+		listProcess.printProcessList();
+		listProcess.deleteProcessFromList("Raul");
+		listProcess.printProcessList();
 	}
 
 }
