@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainView extends JFrame {
 
@@ -42,6 +44,12 @@ public class MainView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		Memory canvas = new Memory(120, 1938, 8, 128);
+		canvas.setForeground(new Color(0, 0, 0));
+		canvas.setBackground(new Color(119, 118, 123));
+		canvas.setBounds(10, 23, 1280, 80);
+		contentPane.add(canvas);
+		
 		JButton btnDeleteProcess = new JButton("Eliminar Proceso");
 		btnDeleteProcess.addMouseListener(new MouseAdapter() {
 			@Override
@@ -58,6 +66,7 @@ public class MainView extends JFrame {
 		btnDeleteProcess.setBounds(1086, 272, 134, 27);
 		contentPane.add(btnDeleteProcess);
 		
+		
 		JSlider sliderSpeed = new JSlider();
 		sliderSpeed.setBackground(new Color(61, 56, 70));
 		sliderSpeed.setForeground(new Color(61, 56, 70));
@@ -73,6 +82,13 @@ public class MainView extends JFrame {
 		contentPane.add(comboBox);
 		
 		JButton btnCreateProcess = new JButton("Crear Proceso");
+		btnCreateProcess.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * Aqui se hace la prueba de dibujo temporalmente
+				 * */
+			}
+		});
 		btnCreateProcess.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -111,10 +127,6 @@ public class MainView extends JFrame {
 		lblVelocidad.setBounds(993, 353, 60, 17);
 		contentPane.add(lblVelocidad);
 		
-		Memory canvas = new Memory(120, 1938, 8, 128);
-		canvas.setForeground(new Color(0, 0, 0));
-		canvas.setBackground(new Color(119, 118, 123));
-		canvas.setBounds(10, 23, 1280, 80);
-		contentPane.add(canvas);
+
 	}
 }
