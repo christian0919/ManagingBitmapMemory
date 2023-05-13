@@ -19,6 +19,7 @@ import java.awt.Label;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JScrollPane;
 
 public class MainView extends JFrame {
 
@@ -30,8 +31,9 @@ public class MainView extends JFrame {
 	 * Create the frame.
 	 */
 	public MainView() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 597, 714);
+		setBounds(100, 100, 1305, 400);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(61, 56, 70));
@@ -53,7 +55,7 @@ public class MainView extends JFrame {
 				
 			}
 		});
-		btnDeleteProcess.setBounds(431, 266, 134, 27);
+		btnDeleteProcess.setBounds(1086, 272, 134, 27);
 		contentPane.add(btnDeleteProcess);
 		
 		JSlider sliderSpeed = new JSlider();
@@ -62,19 +64,13 @@ public class MainView extends JFrame {
 		sliderSpeed.setValue(1);
 		sliderSpeed.setMaximum(10);
 		sliderSpeed.setMinimum(1);
-		sliderSpeed.setBounds(431, 347, 134, 16);
+		sliderSpeed.setBounds(1086, 353, 134, 16);
 		contentPane.add(sliderSpeed);
 		
 		JComboBox comboBox = new JComboBox();
 
-		comboBox.setBounds(431, 232, 134, 26);
+		comboBox.setBounds(1086, 238, 134, 26);
 		contentPane.add(comboBox);
-		
-		Canvas canvas = new Canvas();
-		canvas.setForeground(new Color(94, 92, 100));
-		canvas.setBackground(new Color(119, 118, 123));
-		canvas.setBounds(30, 26, 287, 501);
-		contentPane.add(canvas);
 		
 		JButton btnCreateProcess = new JButton("Crear Proceso");
 		btnCreateProcess.addMouseListener(new MouseAdapter() {
@@ -88,31 +84,37 @@ public class MainView extends JFrame {
 				 * */
 			}
 		});
-		btnCreateProcess.setBounds(431, 193, 134, 27);
+		btnCreateProcess.setBounds(1086, 199, 134, 27);
 		contentPane.add(btnCreateProcess);
 		
 		NameProcessField = new JTextField();
-		NameProcessField.setBounds(431, 103, 134, 21);
+		NameProcessField.setBounds(1086, 109, 134, 21);
 		contentPane.add(NameProcessField);
 		NameProcessField.setColumns(10);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setBounds(526, 153, 39, 22);
+		spinner.setBounds(1181, 159, 39, 22);
 		contentPane.add(spinner);
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setForeground(new Color(119, 118, 123));
-		lblNombre.setBounds(338, 105, 60, 17);
+		lblNombre.setBounds(993, 111, 60, 17);
 		contentPane.add(lblNombre);
 		
 		JLabel lblTamao = new JLabel("Tamaño");
 		lblTamao.setForeground(new Color(119, 118, 123));
-		lblTamao.setBounds(338, 155, 60, 17);
+		lblTamao.setBounds(993, 161, 60, 17);
 		contentPane.add(lblTamao);
 		
 		JLabel lblVelocidad = new JLabel("Velocidad");
 		lblVelocidad.setForeground(new Color(119, 118, 123));
-		lblVelocidad.setBounds(338, 347, 60, 17);
+		lblVelocidad.setBounds(993, 353, 60, 17);
 		contentPane.add(lblVelocidad);
+		
+		Memory canvas = new Memory(120, 1938, 8, 128);
+		canvas.setForeground(new Color(0, 0, 0));
+		canvas.setBackground(new Color(119, 118, 123));
+		canvas.setBounds(10, 23, 1280, 80);
+		contentPane.add(canvas);
 	}
 }
