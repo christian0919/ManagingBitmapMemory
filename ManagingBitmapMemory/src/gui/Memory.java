@@ -34,12 +34,12 @@ class Memory extends Canvas {
         	AnimatedBlink(g, Color.yellow);
         	break;
          
-        case 3://Localize Process
-        	
+        case 3://Inserting Process
+        	LocalizeProcess( g, Color.green, 14, 0,0);
         	break;
          
-        case 4://
-        	
+        case 4://Deleting Process
+        	LocalizeProcess( g, Color.red, 14, 0,0);
         	break;
         
         case 5://
@@ -103,5 +103,25 @@ class Memory extends Canvas {
          e.printStackTrace();
      }
     }
+    
+    public void LocalizeProcess(Graphics g, Color color,int size,int index,int position){
+    	ColoringAll(g,new Color(119,118,123));
+    	index=index*10;
+    	position=position*10;
+    	for(int i = 0 ; i < size ; i++ ) {
+    		wait(300);
+    		ColoringSquare(g,index,position,color);
+			position+=10;
+			if(position >= 80) {
+				position=0;
+				index+=10;
+			}	
+		}
+    	
+    	
+    }
+ 
+    
+
 }
 

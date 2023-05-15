@@ -89,7 +89,7 @@ public class MainView extends JFrame {
 				 * Aqui se hace la prueba de dibujo temporalmente
 				 * */
 
-				canvas.SetOption(2);
+				canvas.SetOption(4);
 
 				canvas.repaint();
 
