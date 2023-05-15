@@ -37,7 +37,7 @@ public class Main {
 		mapabits.PrintMap();
 		int[] ans = mapabits.LookForHole(3);
 		System.out.println(ans[0]+"|"+ans[1]);
-		mapabits.AsingProcessBits(200);
+		mapabits.DispatchProcess(200, "empanada");
 		mapabits.PrintMap();
 		ans = mapabits.LookForHole(500);
 		System.out.println(ans[0]+"|"+ans[1]);

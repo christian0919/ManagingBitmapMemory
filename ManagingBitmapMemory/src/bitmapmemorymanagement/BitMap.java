@@ -4,7 +4,7 @@ public class BitMap {
 
 	private byte[] map = new byte[128];
 	private byte specialBytes[]= {(byte)1,(byte)2,(byte)4,(byte)8,(byte)16,(byte)32,(byte)64,(byte) 128};
-
+	public ListProcess listProcess = new ListProcess();
 
 	public BitMap() {
 		InitializeMap();	
@@ -80,20 +80,24 @@ public class BitMap {
 		}
 		ans[0] = -1;
 		ans[1] = -1;
-		System.out.println("no hole finded");
+		System.out.println("Hole didn't found");
 		return ans;
 	}
 	
-	public void AsingProcessBits(int sizeProcess){
+	public void DispatchProcess(int sizeProcess,String name){
 		int[] positionsHole = new int[2];
 		//positionsHole[0] = beginPosition;
 		//positionsHole[1] = index;
 		positionsHole = LookForHole(sizeProcess);
 		if(positionsHole[0] == -1) {
 			return;//Hole didn't found 
-		}else {//asign memory |||||||||||||| aun falta asignarlo en las listas
+		}else {
+			/*Assign process to list*/
+			listProcess.addProcessToList(name  ,  positionsHole[0]+","+positionsHole[1]  ,String.valueOf(sizeProcess));
+			listProcess.printProcessList();
+			/*Assign process to Bitmap*/
 			for(int i = 0 ; i < sizeProcess ; i++ ) {
-				//int bitPosition,int positionArray
+				/*      bitPosition        positionArray*/
 				SetBit(positionsHole[0] , positionsHole[1]);
 				positionsHole[0]++;
 				if(positionsHole[0] == 8) {
@@ -102,6 +106,10 @@ public class BitMap {
 				}	
 			}
 		}
+	}
+	
+	public void UndispatchProcess(String name) {
+		int[] positionsHole = new int[2];
 	}
 	
 	

@@ -22,6 +22,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SpinnerNumberModel;
 
 public class MainView extends JFrame {
 
@@ -109,6 +110,7 @@ public class MainView extends JFrame {
 		NameProcessField.setColumns(10);
 		
 		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(Short.valueOf((short) 0), Short.valueOf((short) 0), Short.valueOf((short) 10), Short.valueOf((short) 1)));
 		spinner.setBounds(1181, 159, 39, 22);
 		contentPane.add(spinner);
 		

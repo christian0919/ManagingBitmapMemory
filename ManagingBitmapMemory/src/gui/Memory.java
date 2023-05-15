@@ -3,27 +3,45 @@ import java.awt.*;
 
 
 class Memory extends Canvas {
-    int width, height, rows, columns;
-    
+   
+	int  option=0;
+	
+	int width, height, rows, columns;
+   
     int XSquare = 0, YSquare = 0;
     Memory(int w, int h, int r, int c) {
         setSize(width = w, height = h);
         rows = r;
         columns = c;
     }
-
+    
     @Override
     public void paint(Graphics g) {
         
-        NotFound(g);
-        DrawSquare(g, 20,10);
-        DrawGrid(g);
+    	switch (option) { 
+        case 0://
+        	 DrawGrid(g);
+         break;
+        case 2://
+         
+         break;
+  
+        case 3 ://
+        
+         break;
+         
+        case 4://
+        	
+         break;
+        	
+     }
+  
     }
     
-    public void DrawSquare(Graphics g, int x, int y){
+    public void DrawSquare(Graphics g, int x, int y, Color color){
    	 final int widthSquare = 10;
      final int heightSquare = 10;
-     g.setColor(Color.BLUE);
+     g.setColor(color);
      g.fillRect(x, y, widthSquare, heightSquare);
      DrawGrid(g);
      System.out.println(width+"||" +height);
