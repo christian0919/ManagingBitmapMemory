@@ -110,6 +110,24 @@ public class BitMap {
 	
 	public void UndispatchProcess(String name) {
 		int[] positionsHole = new int[2];
+		int position = listProcess.ValidateProcessExist(name);
+		/*Check if process exist*/
+		if(position != -1){
+			positionsHole =  listProcess.getProcessIndex(position);
+			System.out.println("***" +positionsHole[0]+ "***" +positionsHole[1]+ "***");
+			/*Delete process from the map*/
+			for(int i = 0 ; i < listProcess.getProcessSize(position);  i++ ) {
+				/*      bitPosition        positionArray*/
+				UnsetBit(positionsHole[0] , positionsHole[1]);
+				positionsHole[0]++;
+				if(positionsHole[0] == 8) {
+					positionsHole[0]=0;
+					positionsHole[1]++;
+				}	
+			}
+			/*Delete process from the List*/
+			
+		}
 	}
 	
 	
