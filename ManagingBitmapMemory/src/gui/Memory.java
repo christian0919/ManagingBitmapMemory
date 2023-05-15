@@ -1,9 +1,11 @@
 package gui;
 import java.awt.*;
-
-
+import java.util.concurrent.TimeUnit;
 class Memory extends Canvas {
-   
+  	final int widthSquare = 10;
+    final int heightSquare = 10;
+  	final int widthRectangle = 1280;
+    final int heightRectangle = 80;
 	int  option=0;
 	
 	int width, height, rows, columns;
@@ -13,6 +15,7 @@ class Memory extends Canvas {
         setSize(width = w, height = h);
         rows = r;
         columns = c;
+        
     }
     
     @Override
@@ -22,15 +25,15 @@ class Memory extends Canvas {
         case 0://
         	 DrawGrid(g);
          break;
-        case 2://
-         
+        case 1:// Not Found
+        	NotFound(g);
          break;
   
-        case 3 ://
+        case 2://
         
          break;
          
-        case 4://
+        case 3://
         	
          break;
         	
@@ -38,15 +41,21 @@ class Memory extends Canvas {
   
     }
     
-    public void DrawSquare(Graphics g, int x, int y, Color color){
-   	 final int widthSquare = 10;
-     final int heightSquare = 10;
+    public void ColoringSquare(Graphics g, int x, int y, Color color){
+
      g.setColor(color);
      g.fillRect(x, y, widthSquare, heightSquare);
      DrawGrid(g);
      System.out.println(width+"||" +height);
     	
     }
+    public void ColoringAll(Graphics g, Color color){
+        g.setColor(color);
+        g.fillRect(0, 0, widthRectangle, heightRectangle);
+        DrawGrid(g);
+        System.out.println(width+"||" +height);
+       	
+       }
     
     public void DrawGrid(Graphics g)  {
     	int k;
@@ -64,13 +73,27 @@ class Memory extends Canvas {
         }
     }   
     
-    public void NotFound(Graphics g){
-    	 width = getSize().width;
-         height = getSize().height;
-         g.setColor(Color.red);
-         g.fillRect(0, 0, width-1, height-1);
-         DrawGrid(g);
-         System.out.println(width+"||" +height);
+    public void NotFound(Graphics g) {
+         for(int i = 0 ; i < 3 ;i++){
+        	 wait(1000);
+        	 ColoringAll(g,Color.RED);
+        	 wait(1000);
+             ColoringAll(g,new Color(119, 118, 123));
+             System.out.println(i);
+             wait(1000);
+         }
+    }
+    
+    public void SetOption(int op){
+    	option=op;
+    }
+    public static void wait(int ms)
+    {
+   	 try {
+         Thread.sleep(ms); // Suspender el hilo durante 1 segundo
+     } catch (InterruptedException e) {
+         e.printStackTrace();
+     }
     }
 }
 

@@ -88,6 +88,10 @@ public class MainView extends JFrame {
 				/*
 				 * Aqui se hace la prueba de dibujo temporalmente
 				 * */
+				canvas.SetOption(1);
+				canvas.repaint();
+
+				
 			}
 		});
 		btnCreateProcess.addMouseListener(new MouseAdapter() {

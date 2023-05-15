@@ -22,10 +22,6 @@ public class BitMap {
 	private void InitializeMap(){
 		for (int i = 0; i < map.length; i++) {
 			map[i] = (byte) 0;
-			/** Muestra los bits en forma binaria
-			String binaryByte = String.format("%8s", Integer.toBinaryString(map[i] & 0xFF)).replace(' ', '0');
-			System.out.println(binaryByte);
-			**/
 		}
 	}
 	
