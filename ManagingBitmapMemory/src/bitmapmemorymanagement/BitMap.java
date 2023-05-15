@@ -126,7 +126,7 @@ public class BitMap {
 				}	
 			}
 			/*Delete process from the List*/
-			
+			listProcess.deleteProcessFromList(name);
 		}
 	}
 	
