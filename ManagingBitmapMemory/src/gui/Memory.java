@@ -23,19 +23,28 @@ class Memory extends Canvas {
         
     	switch (option) { 
         case 0://
+        	 ColoringAll(g,new Color(119,118,123));
         	 DrawGrid(g);
-         break;
-        case 1:// Not Found
-        	NotFound(g);
-         break;
-  
-        case 2://
-        
-         break;
+        	 break;
+        case 1://Hole Does Not Found
+        	AnimatedBlink(g, Color.red);
+        	break;
+         	
+        case 2://Process Does Not Found 
+        	AnimatedBlink(g, Color.yellow);
+        	break;
          
-        case 3://
+        case 3://Localize Process
         	
-         break;
+        	break;
+         
+        case 4://
+        	
+        	break;
+        
+        case 5://
+        	
+            break;
         	
      }
   
@@ -73,10 +82,10 @@ class Memory extends Canvas {
         }
     }   
     
-    public void NotFound(Graphics g) {
+    public void AnimatedBlink(Graphics g, Color color) {
          for(int i = 0 ; i < 3 ;i++){
         	 wait(1000);
-        	 ColoringAll(g,Color.RED);
+        	 ColoringAll(g,color);
         	 wait(1000);
              ColoringAll(g,new Color(119, 118, 123));
              System.out.println(i);
@@ -87,8 +96,7 @@ class Memory extends Canvas {
     public void SetOption(int op){
     	option=op;
     }
-    public static void wait(int ms)
-    {
+    public static void wait(int ms){
    	 try {
          Thread.sleep(ms); // Suspender el hilo durante 1 segundo
      } catch (InterruptedException e) {
