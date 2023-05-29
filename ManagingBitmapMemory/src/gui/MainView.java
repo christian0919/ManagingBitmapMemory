@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
+import java.awt.Font;
 
 public class MainView extends JFrame {
 
@@ -67,46 +68,15 @@ public class MainView extends JFrame {
 		btnDeleteProcess.setBounds(1086, 272, 134, 27);
 		contentPane.add(btnDeleteProcess);
 		
-		
-		JSlider sliderSpeed = new JSlider();
-		sliderSpeed.setBackground(new Color(61, 56, 70));
-		sliderSpeed.setForeground(new Color(61, 56, 70));
-		sliderSpeed.setValue(1);
-		sliderSpeed.setMaximum(10);
-		sliderSpeed.setMinimum(1);
-		sliderSpeed.setBounds(1086, 353, 134, 16);
-		contentPane.add(sliderSpeed);
-		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("JetBrains Mono NL Light", Font.BOLD, 12));
 
 		comboBox.setBounds(1086, 238, 134, 26);
 		contentPane.add(comboBox);
-		
+
+
 		JButton btnCreateProcess = new JButton("Crear Proceso");
-		btnCreateProcess.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				/*
-				 * Aqui se hace la prueba de dibujo temporalmente
-				 * */
-
-				canvas.SetOption(4);
-
-				canvas.repaint();
-
-				
-			}
-		});
-		btnCreateProcess.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			//Esta madre se va a encargar de despachar memoria
-				/*
-				 *  DespacharProceso( Name, size){
-
-				 * 
-				 * */
-			}
-		});
+		
 		btnCreateProcess.setBounds(1086, 199, 134, 27);
 		contentPane.add(btnCreateProcess);
 		
@@ -130,11 +100,38 @@ public class MainView extends JFrame {
 		lblTamao.setBounds(993, 161, 60, 17);
 		contentPane.add(lblTamao);
 		
-		JLabel lblVelocidad = new JLabel("Velocidad");
-		lblVelocidad.setForeground(new Color(119, 118, 123));
-		lblVelocidad.setBounds(993, 353, 60, 17);
-		contentPane.add(lblVelocidad);
 		
+		btnCreateProcess.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				comboBox.addItem(NameProcessField.getText());
+				
+				/*
+				 * Aqui se hace la prueba de dibujo temporalmente
+				 * 
+				 * 	public String name_Process;
+					public String size_Process;
+					public String begin_Process;
+				 * */
+
+				canvas.SetOption(3);
+				canvas.map.SetName(NameProcessField.getText());
+				
+				canvas.map.size_Process = spinner.getValue().toString();
+				canvas.map.begin_Process = canvas.map.DispatchProcess(Integer.parseInt(spinner.getValue().toString()),canvas.map.name_Process);
+				System.out.println("size: "+ canvas.map.size_Process+" index: "+ canvas.map.begin_Process[0]+" position:"+canvas.map.begin_Process[1] );
+				//canvas.map.PrintMap();
+				canvas.repaint();
+				//Esta madre se va a encargar de despachar memoria
+				/*
+				 *  DespacharProceso( Name, size){
+
+				 * 
+				 * */
+				
+			}
+		});
+
 
 	}
 }
