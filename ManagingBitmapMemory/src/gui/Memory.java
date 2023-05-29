@@ -44,7 +44,9 @@ class Memory extends Canvas {
         	break;
          
         case 4://Deleting Process
-        	LocalizeProcess( g, Color.red, 14, 0,0);
+        	 ColoringAll(g,new Color(119,118,123));
+        	 DrawGrid(g);
+        	 LocalizeProcess( g, Color.red, Integer.parseInt(map.size_Process), map.begin_Process[0],map.begin_Process[1]);
         	break;
         
         case 5://
