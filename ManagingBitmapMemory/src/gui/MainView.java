@@ -86,8 +86,8 @@ public class MainView extends JFrame {
 		NameProcessField.setColumns(10);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(Short.valueOf((short) 0), Short.valueOf((short) 0), Short.valueOf((short) 10), Short.valueOf((short) 1)));
-		spinner.setBounds(1181, 159, 39, 22);
+		spinner.setModel(new SpinnerNumberModel(1, 1, 1024, 1));
+		spinner.setBounds(1152, 159, 68, 22);
 		contentPane.add(spinner);
 		
 		JLabel lblNombre = new JLabel("Nombre");
@@ -106,29 +106,19 @@ public class MainView extends JFrame {
 				
 				comboBox.addItem(NameProcessField.getText());
 				
-				/*
-				 * Aqui se hace la prueba de dibujo temporalmente
-				 * 
-				 * 	public String name_Process;
-					public String size_Process;
-					public String begin_Process;
-				 * */
+				if(NameProcessField.getText().equals("") || Integer.parseInt(spinner.getValue().toString())==0) {
+					System.out.println("incorrect values || blink");
+				}else {
+					canvas.SetOption(3);
+					canvas.map.SetName(NameProcessField.getText());
+					
+					canvas.map.size_Process = spinner.getValue().toString();
+					canvas.map.begin_Process = canvas.map.DispatchProcess(Integer.parseInt(spinner.getValue().toString()),canvas.map.name_Process);
+					System.out.println("size: "+ canvas.map.size_Process+" index: "+ canvas.map.begin_Process[0]+" position:"+canvas.map.begin_Process[1] );
+					//canvas.map.PrintMap();
+					canvas.repaint();
 
-				canvas.SetOption(3);
-				canvas.map.SetName(NameProcessField.getText());
-				
-				canvas.map.size_Process = spinner.getValue().toString();
-				canvas.map.begin_Process = canvas.map.DispatchProcess(Integer.parseInt(spinner.getValue().toString()),canvas.map.name_Process);
-				System.out.println("size: "+ canvas.map.size_Process+" index: "+ canvas.map.begin_Process[0]+" position:"+canvas.map.begin_Process[1] );
-				//canvas.map.PrintMap();
-				canvas.repaint();
-				//Esta madre se va a encargar de despachar memoria
-				/*
-				 *  DespacharProceso( Name, size){
-
-				 * 
-				 * */
-				
+				}
 			}
 		});
 
