@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListProcess {
-	List<String[]> processList = new ArrayList<String[]>();
+	public List<String[]> processList = new ArrayList<String[]>();
 	
 	
 	public ListProcess() {
@@ -53,5 +53,6 @@ public class ListProcess {
 	public int getProcessSize(int i){
 		return Integer.parseInt(processList.get(i)[2]);
 	}
+	
 	
 }

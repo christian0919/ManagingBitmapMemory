@@ -113,11 +113,10 @@ public class MainView extends JFrame {
 					canvas.begin_Process[0] =canvas.begin_Process[1];
 					canvas.begin_Process[1] = aux;
 					System.out.println("size: "+ canvas.size_Process+" index: "+canvas.begin_Process[1]+" position:"+canvas.begin_Process[0] );
-					//canvas.map.PrintMap();
 					//Draw all map pendiente
+					canvas.SetList(map.listProcess.processList);
 					canvas.repaint();
 					comboBox.addItem(NameProcessField.getText());
-
 				}
 				
 			}
@@ -145,6 +144,7 @@ public class MainView extends JFrame {
 					
 					map.UndispatchProcess(value);
 					comboBox.removeItemAt(comboBox.getSelectedIndex());
+					canvas.SetList(map.listProcess.processList);
 					canvas.repaint();
 				}
 			}

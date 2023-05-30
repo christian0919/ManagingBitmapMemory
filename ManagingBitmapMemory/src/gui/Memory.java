@@ -1,5 +1,7 @@
 package gui;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import bitmapmemorymanagement.BitMap;
@@ -12,6 +14,7 @@ class Memory extends Canvas {
 	int  option=0;
 	int width, height, rows, columns;
 	String size_Process;
+	 List<String[]> list;
 	int[] begin_Process = new int[2];
     int XSquare = 0, YSquare = 0;
     Memory(int w, int h, int r, int c) {
@@ -31,22 +34,34 @@ class Memory extends Canvas {
         	 break;
         case 1://Hole Does Not Found
         	AnimatedBlink(g, Color.red);
+        	ColoringAll(g,new Color(119,118,123));
+        	DrawGrid(g);
+        	DrawAllMap(g);
         	break;
          	
         case 2://Process Does Not Found 
         	AnimatedBlink(g, Color.yellow);
+        	ColoringAll(g,new Color(119,118,123));
+        	DrawGrid(g);
+        	DrawAllMap(g);
         	break;
          
         case 3://Inserting Process
         	 ColoringAll(g,new Color(119,118,123));
         	 DrawGrid(g);
         	 LocalizeProcess( g, Color.green, Integer.parseInt(size_Process), begin_Process[0],begin_Process[1]);
+        	 ColoringAll(g,new Color(119,118,123));
+        	 DrawGrid(g);
+        	 DrawAllMap(g);
         	break;
          
         case 4://Deleting Process
         	 ColoringAll(g,new Color(119,118,123));
         	 DrawGrid(g);
         	 LocalizeProcess( g, Color.red, Integer.parseInt(size_Process), begin_Process[0],begin_Process[1]);
+        	 ColoringAll(g,new Color(119,118,123));
+        	 DrawGrid(g);
+        	 DrawAllMap(g);
         	break;
         
         case 5://
@@ -129,8 +144,39 @@ class Memory extends Canvas {
     	
     	
     }
- 
+    public void LocalizeProcess2(Graphics g, Color color,int size,int index,int position){
+    	index=index*10;
+    	position=position*10;
+    	for(int i = 0 ; i < size ; i++ ) {
+    		wait(300);
+    		ColoringSquare(g,index,position,color);
+			position+=10;
+			if(position >= 80) {
+				position=0;
+				index+=10;
+			}	
+		}
+    	
+    	
+    }
     
-
+    public void DrawAllMap(Graphics g){
+    	
+    	for(String p[] :  list) {
+			//System.out.println("Name:"+p[0]+" Begin:"+p[1]+" Size:"+p[2]);
+    		String[] str= p[1].split(",");
+    		LocalizeProcess2(g, Color.green ,Integer.parseInt(p[2]),Integer.parseInt(str[1]),Integer.parseInt(str[0]));
+		}
+    }
+    
+    public void SetList( List<String[]> getlist){
+    	
+    	if(!(list == null || list.size() == 0)){
+    		list.clear();
+    	}
+    	  list = new ArrayList<>(getlist);
+    }
+    
+    
 }
 
