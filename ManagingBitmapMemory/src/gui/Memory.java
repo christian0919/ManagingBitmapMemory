@@ -10,9 +10,9 @@ class Memory extends Canvas {
   	final int widthRectangle = 1280;
     final int heightRectangle = 80;
 	int  option=0;
-	public BitMap map = new BitMap();
 	int width, height, rows, columns;
-   
+	String size_Process;
+	int[] begin_Process = new int[2];
     int XSquare = 0, YSquare = 0;
     Memory(int w, int h, int r, int c) {
         setSize(width = w, height = h);
@@ -40,13 +40,13 @@ class Memory extends Canvas {
         case 3://Inserting Process
         	 ColoringAll(g,new Color(119,118,123));
         	 DrawGrid(g);
-        	 LocalizeProcess( g, Color.green, Integer.parseInt(map.size_Process), map.begin_Process[0],map.begin_Process[1]);
+        	 LocalizeProcess( g, Color.green, Integer.parseInt(size_Process), begin_Process[0],begin_Process[1]);
         	break;
          
         case 4://Deleting Process
         	 ColoringAll(g,new Color(119,118,123));
         	 DrawGrid(g);
-        	 LocalizeProcess( g, Color.red, Integer.parseInt(map.size_Process), map.begin_Process[0],map.begin_Process[1]);
+        	 LocalizeProcess( g, Color.red, Integer.parseInt(size_Process), begin_Process[0],begin_Process[1]);
         	break;
         
         case 5://

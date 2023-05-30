@@ -22,7 +22,7 @@ public class ListProcess {
 	
 	public void deleteProcessFromList(String name){
 		for(int i = 0; i < processList.size(); i++ ) {
-			if(name == processList.get(i)[0]){
+			if(name.equals(processList.get(i)[0])){
 				processList.remove(i);
 				System.out.println("Deleted");
 				break;
@@ -37,7 +37,7 @@ public class ListProcess {
 	
 	public int ValidateProcessExist(String name){
 		for(int i = 0; i < processList.size(); i++ ) {
-			if(name == processList.get(i)[0]){
+			if(name.equals(processList.get(i)[0])){
 				return i;
 				}
 		}

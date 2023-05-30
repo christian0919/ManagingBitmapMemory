@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import bitmapmemorymanagement.BitMap;
+
 import javax.swing.JButton;
 import javax.swing.JSlider;
 import java.awt.Button;
@@ -19,6 +22,8 @@ import java.awt.Label;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Map;
+
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -29,6 +34,7 @@ public class MainView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField NameProcessField;
+	private 	BitMap map = new BitMap();
 
 	
 	/**
@@ -89,31 +95,7 @@ public class MainView extends JFrame {
 		lblTamao.setForeground(new Color(119, 118, 123));
 		lblTamao.setBounds(993, 161, 60, 17);
 		contentPane.add(lblTamao);
-		btnDeleteProcess.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//
-				String value =(String)comboBox.getSelectedItem();
-				System.out.println(value);
-				int[] data = new int[3];
-					
-					canvas.map.UndispatchProcess("Angel");
-					canvas.map.size_Process = String.valueOf(data[0]);
-					canvas.map.begin_Process[0] = data[1];
-					canvas.map.begin_Process[1] = data[2];
-					canvas.SetOption(4);	
-					canvas.map.listProcess.printProcessList();
-					System.out.println(data[0]);
-					System.out.println(data[1]);
-					System.out.println(data[2]);
-					canvas.SetOption(3);	
-					canvas.repaint();
-					canvas.map.PrintMap();
-					
-				
-			}
-		});
-		
+
 		btnCreateProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -123,23 +105,39 @@ public class MainView extends JFrame {
 				}else {
 					int aux;
 					canvas.SetOption(3);
-					canvas.map.SetName(NameProcessField.getText());
 					
-					canvas.map.size_Process = spinner.getValue().toString();
-					canvas.map.begin_Process = canvas.map.DispatchProcess(Integer.parseInt(spinner.getValue().toString()),canvas.map.name_Process);
-					aux = 	canvas.map.begin_Process[0];
-					canvas.map.begin_Process[0] = canvas.map.begin_Process[1];
-					canvas.map.begin_Process[1] = aux;
-					System.out.println("size: "+ canvas.map.size_Process+" index: "+ canvas.map.begin_Process[1]+" position:"+canvas.map.begin_Process[0] );
+					
+					canvas.size_Process = spinner.getValue().toString();
+					canvas.begin_Process = map.DispatchProcess(Integer.parseInt(spinner.getValue().toString()),NameProcessField.getText());
+					aux = 	canvas.begin_Process[0];
+					canvas.begin_Process[0] =canvas.begin_Process[1];
+					canvas.begin_Process[1] = aux;
+					System.out.println("size: "+ canvas.size_Process+" index: "+canvas.begin_Process[1]+" position:"+canvas.begin_Process[0] );
 					//canvas.map.PrintMap();
 					//Draw all map pendiente
 					canvas.repaint();
 					comboBox.addItem(NameProcessField.getText());
 
 				}
+				
 			}
 		});
 
+		btnDeleteProcess.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//
+				String value =(String)comboBox.getSelectedItem();
+				map.listProcess.printProcessList();	
+				map.UndispatchProcess(value);
+				map.listProcess.printProcessList();	
+				System.out.println(map.listProcess.ValidateProcessExist("value"));
+				map.listProcess.printProcessList();		
 
+				
+			}
+		});
+		
 	}
+
 }

@@ -5,9 +5,7 @@ public class BitMap {
 	private byte[] map = new byte[128];
 	private byte specialBytes[]= {(byte)1,(byte)2,(byte)4,(byte)8,(byte)16,(byte)32,(byte)64,(byte) 128};
 	public ListProcess listProcess = new ListProcess();
-	public String name_Process;
-	public String size_Process;
-	public int[] begin_Process;
+
 	public boolean state = false;
 	public BitMap() {
 		InitializeMap();	
@@ -110,7 +108,7 @@ public class BitMap {
 		return aux_PositionHole;
 	}
 	
-	public int[] UndispatchProcess(String name) {
+	public  void UndispatchProcess(String name) {
 		int[] positionsHole = new int[2];
 		int[] aux_PositionHole = new int[3];
 		int position = listProcess.ValidateProcessExist(name);
@@ -118,9 +116,7 @@ public class BitMap {
 		/*Check if process exist*/
 		if(position != -1){
 			positionsHole =  listProcess.getProcessIndex(position);
-			aux_PositionHole[0] = positionsHole[0];
-			aux_PositionHole[1] = positionsHole[1];
-			aux_PositionHole[2] = listProcess.getProcessSize(position);
+
 			System.out.println("***" +positionsHole[0]+ "***" +positionsHole[1]+ "***");
 			/*Delete process from the map*/
 			for(int i = 0 ; i < listProcess.getProcessSize(position);  i++ ) {
@@ -135,21 +131,10 @@ public class BitMap {
 			/*Delete process from the List*/
 			listProcess.deleteProcessFromList(name);
 		}
-		System.out.println(aux_PositionHole[0]);
-		System.out.println(aux_PositionHole[1]);
-		System.out.println(aux_PositionHole[2]);
-		return aux_PositionHole;
+
 	}
 
-	public void SetName(String nm) {
-		name_Process = nm;
-	}
-	public void SetSize(String zs){
-		 size_Process = zs;
-	}
-	public void SetBegin(int[] bg){
-		 begin_Process = bg;
-	}
+
 
 	
 }

@@ -21,8 +21,11 @@ public class Main {
 
 		mapabits.DispatchProcess(200, "empanada");
 		mapabits.PrintMap();
-		mapabits.UndispatchProcess("empanada");
-		mapabits.PrintMap();
+		mapabits.DispatchProcess(300, "angel");
+		//mapabits.PrintMap();
+		mapabits.UndispatchProcess("angel");
+		//mapabits.PrintMap();
+		
 
 
 		
