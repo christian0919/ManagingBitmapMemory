@@ -126,15 +126,27 @@ public class MainView extends JFrame {
 		btnDeleteProcess.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//
-				String value =(String)comboBox.getSelectedItem();
-				map.listProcess.printProcessList();	
-				map.UndispatchProcess(value);
-				map.listProcess.printProcessList();	
-				System.out.println(map.listProcess.ValidateProcessExist("value"));
-				map.listProcess.printProcessList();		
-
 				
+				
+				String value =(String)comboBox.getSelectedItem();
+				if(value==null || value.isEmpty()) {
+					System.out.println("Error");
+				}else {
+					canvas.SetOption(4);
+					int indexList;
+					int aux;
+					
+					indexList = map.listProcess.ValidateProcessExist(value);
+					canvas.size_Process= String.valueOf(map.listProcess.getProcessSize(indexList));
+					canvas.begin_Process = map.listProcess.getProcessIndex(indexList);
+					aux = 	canvas.begin_Process[0];
+					canvas.begin_Process[0] =canvas.begin_Process[1];
+					canvas.begin_Process[1] = aux;
+					
+					map.UndispatchProcess(value);
+					comboBox.removeItemAt(comboBox.getSelectedIndex());
+					canvas.repaint();
+				}
 			}
 		});
 		
