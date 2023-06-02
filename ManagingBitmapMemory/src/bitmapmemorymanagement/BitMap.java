@@ -111,7 +111,6 @@ public class BitMap {
 
 	public void UndispatchProcess(String name) {
 		int[] positionsHole = new int[2];
-		int[] aux_PositionHole = new int[3];
 		int position = listProcess.ValidateProcessExist(name);
 		System.out.println("position: " + position);
 		/* Check if process exist */

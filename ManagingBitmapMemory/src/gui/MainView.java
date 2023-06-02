@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,22 +8,13 @@ import javax.swing.border.EmptyBorder;
 import bitmapmemorymanagement.BitMap;
 
 import javax.swing.JButton;
-import javax.swing.JSlider;
-import java.awt.Button;
-import javax.swing.JList;
-import javax.swing.JEditorPane;
 import javax.swing.JComboBox;
-import java.awt.Canvas;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
-import java.awt.Label;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Map;
-
-import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
@@ -32,6 +22,7 @@ import java.awt.Font;
 
 public class MainView extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField NameProcessField;
 	private BitMap map = new BitMap();
@@ -62,7 +53,7 @@ public class MainView extends JFrame {
 		btnDeleteProcess.setBounds(1086, 272, 134, 27);
 		contentPane.add(btnDeleteProcess);
 
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox();
 		comboBox.setFont(new Font("JetBrains Mono NL Light", Font.BOLD, 12));
 
 		comboBox.setBounds(1086, 238, 134, 26);

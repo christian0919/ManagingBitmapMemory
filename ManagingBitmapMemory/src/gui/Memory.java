@@ -56,7 +56,7 @@ class Memory extends Canvas {
 		case 4:// Deleting Process
 			ColoringAll(g, new Color(119, 118, 123));
 			DrawGrid(g);
-			LocalizeProcess2(g, Color.red, Integer.parseInt(size_Process), begin_Process[0], begin_Process[1]);
+			LocalizeProcess(g, Color.red, Integer.parseInt(size_Process), begin_Process[0], begin_Process[1]);
 			ColoringAll(g, new Color(119, 118, 123));
 			DrawGrid(g);
 			DrawAllMap(g);
@@ -123,7 +123,6 @@ class Memory extends Canvas {
 	}
 
 	public void LocalizeProcess(Graphics g, Color color, int size, int index, int position) {
-		ColoringAll(g, new Color(119, 118, 123));
 		index = index * 10;
 		position = position * 10;
 		for (int i = 0; i < size; i++) {
