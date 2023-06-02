@@ -3,11 +3,9 @@ package gui;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import bitmapmemorymanagement.BitMap;
 
 class Memory extends Canvas {
+	private static final long serialVersionUID = 1L;
 	final int widthSquare = 10;
 	final int heightSquare = 10;
 	final int widthRectangle = 1280;
@@ -47,7 +45,9 @@ class Memory extends Canvas {
 			break;
 		case 3:// Inserting Process
 			ColoringAll(g, new Color(119, 118, 123));
+
 			DrawGrid(g);
+			Searching(g);
 			LocalizeProcess(g, Color.green, Integer.parseInt(size_Process), begin_Process[0], begin_Process[1]);
 			ColoringAll(g, new Color(119, 118, 123));
 			DrawGrid(g);
@@ -71,7 +71,6 @@ class Memory extends Canvas {
 		g.setColor(color);
 		g.fillRect(x, y, widthSquare, heightSquare);
 		DrawGrid(g);
-		System.out.println(width + "||" + height);
 
 	}
 
@@ -79,7 +78,6 @@ class Memory extends Canvas {
 		g.setColor(color);
 		g.fillRect(0, 0, widthRectangle, heightRectangle);
 		DrawGrid(g);
-		System.out.println(width + "||" + height);
 
 	}
 
@@ -103,10 +101,10 @@ class Memory extends Canvas {
 		for (int i = 0; i < 3; i++) {
 			wait(1000);
 			ColoringAll(g, color);
-			wait(1000);
+			wait(800);
 			ColoringAll(g, new Color(119, 118, 123));
 			System.out.println(i);
-			wait(1000);
+			wait(400);
 		}
 		ColoringAll(g, new Color(119, 118, 123));
 		DrawGrid(g);
@@ -137,14 +135,13 @@ class Memory extends Canvas {
 				index += 10;
 			}
 		}
-
+		wait(400);
 	}
 
 	public void LocalizeProcess2(Graphics g, Color color, int size, int index, int position) {
 		index = index * 10;
 		position = position * 10;
 		for (int i = 0; i < size; i++) {
-			wait(300);
 			ColoringSquare(g, index, position, color);
 			position += 10;
 			if (position >= 80) {
@@ -172,6 +169,23 @@ class Memory extends Canvas {
 			list.clear();
 		}
 		list = new ArrayList<>(getlist);
+	}
+
+	public void Searching(Graphics g) {
+		// begin_Process[0], begin_Process[1] - position index
+		int j = 0;
+		for (int i = 0; i <= begin_Process[1]; i++) {
+
+			for (j = 0; j < 8; j++) {
+				if ((i == begin_Process[0] && j==begin_Process[1])) {return ;}
+				ColoringAll(g, new Color(119, 118, 123));
+				ColoringSquare(g, i * 10, j * 10, Color.orange);
+				System.out.println("index:" + begin_Process[0] + " Position:" + begin_Process[1] + " i:" + i + "   j:" + j);
+				wait(400);
+
+			}
+
+		}
 	}
 
 }

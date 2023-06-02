@@ -118,7 +118,7 @@ public class BitMap {
 		if (position != -1) {
 			positionsHole = listProcess.getProcessIndex(position);
 
-			System.out.println("***" + positionsHole[0] + "***" + positionsHole[1] + "***");
+			System.out.println("Position hole : ***" + positionsHole[0] + "***" + positionsHole[1] + "***");
 			/* Delete process from the map */
 			for (int i = 0; i < listProcess.getProcessSize(position); i++) {
 				/* bitPosition positionArray */
