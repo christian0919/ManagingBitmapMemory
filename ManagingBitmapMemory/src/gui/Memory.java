@@ -179,7 +179,6 @@ class Memory extends Canvas {
 				if ((i == begin_Process[0] && j==begin_Process[1])) {return ;}
 				ColoringAll(g, new Color(119, 118, 123));
 				ColoringSquare(g, i * 10, j * 10, Color.orange);
-				System.out.println("index:" + begin_Process[0] + " Position:" + begin_Process[1] + " i:" + i + "   j:" + j);
 				wait(400);
 
 			}

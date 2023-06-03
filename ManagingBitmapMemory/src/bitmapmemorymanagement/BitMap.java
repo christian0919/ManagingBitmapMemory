@@ -108,7 +108,42 @@ public class BitMap {
 		}
 		return aux_PositionHole;
 	}
-
+	
+	public String stringDecimalNumbers(int op){
+		String aux = "";
+		String hundreds= "";
+		String tens= "";
+		String units= "";
+		for(byte a : map) {
+			//System.out.print(a & 0xFF);
+			aux = ""+(a & 0xFF);
+			if((a & 0xFF)<10){
+				aux = "00" + aux;
+			}else {
+				if((a & 0xFF)<100){
+					aux = "0" + aux;
+				}
+			}
+			//Asgnacion a 3 cadenas
+			hundreds = hundreds+ " " + aux.charAt(0);
+			tens = tens + " " + aux.charAt(1); 
+			units = units + " " + aux.charAt(2);
+			
+			}
+		
+		switch(op) {
+		
+		case 0://hundreds
+				return hundreds;
+		case 1:// tens
+				return tens;
+		case 2://units
+				return units;
+		
+		}
+		return "";
+	}
+	
 	public void UndispatchProcess(String name) {
 		int[] positionsHole = new int[2];
 		int position = listProcess.ValidateProcessExist(name);
