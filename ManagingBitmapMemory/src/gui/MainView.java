@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import bitmapmemorymanagement.BitMap;
+import bitmapmemorymanagement.Theme;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,6 +21,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.Label;
+import javax.swing.ImageIcon;
 
 public class MainView extends JFrame {
 
@@ -27,6 +30,7 @@ public class MainView extends JFrame {
 	private JPanel contentPane;
 	private JTextField NameProcessField;
 	private BitMap map = new BitMap();
+	public Theme theme = new Theme();
 
 	/**
 	 * Create the frame.
@@ -37,7 +41,7 @@ public class MainView extends JFrame {
 		setBounds(100, 100, 1325, 455);
 
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(61, 56, 70));
+		contentPane.setBackground(theme.GetBackgroundColor());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -80,13 +84,13 @@ public class MainView extends JFrame {
 
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblNombre.setForeground(new Color(119, 118, 123));
+		lblNombre.setForeground(theme.GetLettersColor());
 		lblNombre.setBounds(1063, 225, 60, 17);
 		contentPane.add(lblNombre);
 
 		JLabel lblTamao = new JLabel("Tamaño");
 		lblTamao.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblTamao.setForeground(new Color(119, 118, 123));
+		lblTamao.setForeground(theme.GetLettersColor());
 		lblTamao.setBounds(1063, 275, 60, 17);
 		contentPane.add(lblTamao);
 		
@@ -116,6 +120,23 @@ public class MainView extends JFrame {
 		lblUnits.setBounds(10, 142, 1330, 21);
 		contentPane.add(lblUnits);
 		lblUnits.setText(map.stringDecimalNumbers(2));
+		
+		JLabel lblInfo = new JLabel("");
+		lblInfo.setIcon(new ImageIcon(MainView.class.getResource("/img/info.png")));
+		lblInfo.setBounds(10, 386, 35, 38);
+		contentPane.add(lblInfo);
+		
+		JLabel lblSettings = new JLabel("");
+		lblSettings.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Settings settingsView = new Settings();
+				settingsView.setVisible(true);
+			}
+		});
+		lblSettings.setIcon(new ImageIcon(MainView.class.getResource("/img/settings.png")));
+		lblSettings.setBounds(45, 386, 46, 38);
+		contentPane.add(lblSettings);
 		btnCreateProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (NameProcessField.getText().equals("") || Integer.parseInt(spinner.getValue().toString()) == 0) {

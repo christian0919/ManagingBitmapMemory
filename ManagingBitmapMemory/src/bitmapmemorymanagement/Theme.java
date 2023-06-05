@@ -40,19 +40,19 @@ public class Theme {
 		GetConfig();
 		}
 
-	Color GetBackgroundColor() {
+	public Color GetBackgroundColor() {
 		return background;
 	}
 
-	Color GetLettersColor() {
+	public Color GetLettersColor() {
 		return letters;
 	}
 
-	Color GetBackgroundMap() {
+	public Color GetBackgroundMap() {
 		return background_Map;
 	}
 
-	void SetConfig(int option) {
+	public void SetConfig(int option) {
 		switch (option) {
 
 		case 1:// theme 1
@@ -97,13 +97,14 @@ public class Theme {
 		
 	}
 
-	void GetConfig() {
+	public void GetConfig() {
 		short cont = 0;
 		String ruta = "./Config";
 		try {
 			File file = new File(ruta);
 			if (!file.exists()) {
 				file.createNewFile();
+				SetConfig(4);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -137,7 +138,6 @@ public class Theme {
 	private void setConfig(short op, String colors) {
 		String[] values = colors.split(":");
 		String[] RGB = values[1].split(",");
-		System.out.println("R:" + RGB[0] + " G:" + RGB[1] + " B:" + RGB[2]);
 		Color aux = new Color(Integer.parseInt(RGB[0]), Integer.parseInt(RGB[1]), Integer.parseInt(RGB[2]));
 		switch (op) {
 		case 0:

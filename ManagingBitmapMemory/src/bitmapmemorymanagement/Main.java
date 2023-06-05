@@ -12,9 +12,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Launch view
+
 		MainView frame = new MainView();
 		frame.setVisible(true);
-		Theme tema = new Theme();
+
 	}
 
 }

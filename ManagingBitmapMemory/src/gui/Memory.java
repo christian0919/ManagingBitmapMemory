@@ -4,6 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import bitmapmemorymanagement.Theme;
+
 class Memory extends Canvas {
 	private static final long serialVersionUID = 1L;
 	final int widthSquare = 10;
@@ -12,6 +14,7 @@ class Memory extends Canvas {
 	final int heightRectangle = 80;
 	int option = 0;
 	int width, height, rows, columns;
+	Color back;
 	String size_Process;
 	List<String[]> list;
 	int[] begin_Process = new int[2];
@@ -21,6 +24,8 @@ class Memory extends Canvas {
 		setSize(width = w, height = h);
 		rows = r;
 		columns = c;
+		Theme theme = new Theme();
+		back = theme.GetBackgroundMap();
 	}
 
 	@Override
@@ -28,36 +33,36 @@ class Memory extends Canvas {
 
 		switch (option) {
 		case 0://
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 			DrawGrid(g);
 			break;
 		case 1:// Hole Does Not Found
 			AnimatedBlink(g, Color.red);
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 			DrawGrid(g);
 			DrawAllMap(g);
 			break;
 		case 2:// Process Does Not Found
 			AnimatedBlink(g, Color.yellow);
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 			DrawGrid(g);
 			DrawAllMap(g);
 			break;
 		case 3:// Inserting Process
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 
 			DrawGrid(g);
 			Searching(g);
 			LocalizeProcess(g, Color.green, Integer.parseInt(size_Process), begin_Process[0], begin_Process[1]);
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 			DrawGrid(g);
 			DrawAllMap(g);
 			break;
 		case 4:// Deleting Process
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 			DrawGrid(g);
 			LocalizeProcess(g, Color.red, Integer.parseInt(size_Process), begin_Process[0], begin_Process[1]);
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 			DrawGrid(g);
 			DrawAllMap(g);
 			break;
@@ -102,11 +107,11 @@ class Memory extends Canvas {
 			wait(1000);
 			ColoringAll(g, color);
 			wait(800);
-			ColoringAll(g, new Color(119, 118, 123));
+			ColoringAll(g, back);
 			System.out.println(i);
 			wait(400);
 		}
-		ColoringAll(g, new Color(119, 118, 123));
+		ColoringAll(g, back);
 		DrawGrid(g);
 	}
 
@@ -177,7 +182,7 @@ class Memory extends Canvas {
 
 			for (j = 0; j < 8; j++) {
 				if ((i == begin_Process[0] && j==begin_Process[1])) {return ;}
-				ColoringAll(g, new Color(119, 118, 123));
+				ColoringAll(g, back);
 				ColoringSquare(g, i * 10, j * 10, Color.orange);
 				wait(400);
 
