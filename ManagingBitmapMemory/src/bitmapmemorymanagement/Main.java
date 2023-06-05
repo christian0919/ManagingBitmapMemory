@@ -1,6 +1,8 @@
 
 package bitmapmemorymanagement;
 
+import java.awt.Color;
+
 import gui.MainView;
 
 /**
@@ -12,6 +14,7 @@ public class Main {
 		// Launch view
 		MainView frame = new MainView();
 		frame.setVisible(true);
+		Theme tema = new Theme();
 	}
 
 }
