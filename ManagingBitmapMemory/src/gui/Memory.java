@@ -66,6 +66,15 @@ class Memory extends Canvas {
 			DrawGrid(g);
 			DrawAllMap(g);
 			break;
+		case 5://coloring example info
+			ColoringSquare(g,0,0,Color.green);
+			ColoringSquare(g,0,10,Color.green);
+			
+			ColoringSquare(g,0,40,Color.green);
+			
+			ColoringSquare(g,0,70,Color.green);
+			ColoringSquare(g,0,80,Color.green);
+			break;
 
 		}
 

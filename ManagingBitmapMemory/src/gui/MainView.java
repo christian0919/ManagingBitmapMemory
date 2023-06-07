@@ -4,10 +4,8 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import bitmapmemorymanagement.BitMap;
 import bitmapmemorymanagement.Theme;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -21,8 +19,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.Label;
 import javax.swing.ImageIcon;
+import java.awt.Canvas;
 
 public class MainView extends JFrame {
 
@@ -98,7 +96,7 @@ public class MainView extends JFrame {
 		lblHundreds.setVerticalAlignment(SwingConstants.TOP);
 		lblHundreds.setHorizontalAlignment(SwingConstants.LEFT);
 		lblHundreds.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblHundreds.setForeground(new Color(255, 255, 255));
+		lblHundreds.setForeground(theme.GetLettersColor());
 		lblHundreds.setBounds(10, 109, 1330, 21);
 		contentPane.add(lblHundreds);
 		lblHundreds.setText(map.stringDecimalNumbers(0));
@@ -106,7 +104,7 @@ public class MainView extends JFrame {
 		JLabel lblTens = new JLabel("");
 				lblTens.setVerticalAlignment(SwingConstants.TOP);
 		lblTens.setHorizontalAlignment(SwingConstants.LEFT);
-		lblTens.setForeground(Color.WHITE);
+		lblTens.setForeground(theme.GetLettersColor());
 		lblTens.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblTens.setBounds(10, 125, 1330, 21);
 		contentPane.add(lblTens);
@@ -115,7 +113,7 @@ public class MainView extends JFrame {
 		JLabel lblUnits = new JLabel("");
 				lblUnits.setVerticalAlignment(SwingConstants.TOP);
 		lblUnits.setHorizontalAlignment(SwingConstants.LEFT);
-		lblUnits.setForeground(Color.WHITE);
+		lblUnits.setForeground(theme.GetLettersColor());
 		lblUnits.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblUnits.setBounds(10, 142, 1330, 21);
 		contentPane.add(lblUnits);
@@ -134,9 +132,87 @@ public class MainView extends JFrame {
 				settingsView.setVisible(true);
 			}
 		});
+		lblInfo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Info info = new Info();
+				info.setVisible(true);
+			}
+		});
 		lblSettings.setIcon(new ImageIcon(MainView.class.getResource("/img/settings.png")));
 		lblSettings.setBounds(45, 386, 46, 38);
 		contentPane.add(lblSettings);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(MainView.class.getResource("/img/blinkRed.gif")));
+		lblNewLabel.setBounds(318, 223, 23, 17);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(MainView.class.getResource("/img/blinkYellow.gif")));
+		lblNewLabel_1.setBounds(318, 249, 23, 17);
+		contentPane.add(lblNewLabel_1);
+		
+		Canvas canvasGren = new Canvas();
+		canvasGren.setBackground(Color.GREEN);
+		canvasGren.setBounds(318, 296, 23, 21);
+		contentPane.add(canvasGren);
+		
+		Canvas canvasOrange = new Canvas();
+		canvasOrange.setBackground(Color.ORANGE);
+		canvasOrange.setBounds(318, 323, 23, 21);
+		contentPane.add(canvasOrange);
+		
+		Canvas canvasBakMap = new Canvas();
+		canvasBakMap.setBackground(theme.GetBackgroundMap());
+		canvasBakMap.setBounds(319, 353, 21, 19);
+		contentPane.add(canvasBakMap);
+		
+		Canvas canvasFondo = new Canvas();
+		canvasFondo.setBackground(Color.BLACK);
+		canvasFondo.setBounds(318, 352, 23, 21);
+		contentPane.add(canvasFondo);
+		
+		JLabel lblNewLabel_2 = new JLabel("Datos de entrada invalidos, el nombre no puede estar vacio");
+		lblNewLabel_2.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(353, 223, 450, 17);
+		lblNewLabel_2.setForeground(theme.GetLettersColor());
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("No hay sufuciente espacio para ingresar ese proceso");
+		lblNewLabel_3.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewLabel_3.setBounds(353, 251, 464, 17);
+		lblNewLabel_3.setForeground(theme.GetLettersColor());
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Espacio ocupado");
+		lblNewLabel_4.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewLabel_4.setBounds(353, 300, 281, 17);
+		lblNewLabel_4.setForeground(theme.GetLettersColor());
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Buscando espacio libre");
+		lblNewLabel_5.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewLabel_5.setBounds(353, 323, 180, 17);
+		lblNewLabel_5.setForeground(theme.GetLettersColor());
+		contentPane.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("Espacio libre");
+		lblNewLabel_6.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewLabel_6.setBounds(353, 359, 231, 17);
+		lblNewLabel_6.setForeground(theme.GetLettersColor());
+		contentPane.add(lblNewLabel_6);
+		
+		Canvas canvasRed = new Canvas();
+		canvasRed.setBackground(Color.RED);
+		canvasRed.setBounds(318, 272, 23, 21);
+		contentPane.add(canvasRed);
+		
+		JLabel lblNewLabel_7 = new JLabel("Eliminando espacio");
+		lblNewLabel_7.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewLabel_7.setBounds(353, 276, 219, 17);
+		lblNewLabel_7.setForeground(theme.GetLettersColor());
+		contentPane.add(lblNewLabel_7);
 		btnCreateProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (NameProcessField.getText().equals("") || Integer.parseInt(spinner.getValue().toString()) == 0) {

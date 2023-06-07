@@ -1,8 +1,6 @@
 
 package bitmapmemorymanagement;
 
-import java.awt.Color;
-
 import gui.MainView;
 
 /**
