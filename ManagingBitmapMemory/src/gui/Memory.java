@@ -17,6 +17,7 @@ class Memory extends Canvas {
 	Color back;
 	String size_Process;
 	List<String[]> list;
+	List<String[]> Auxlist;
 	int[] begin_Process = new int[2];
 	int XSquare = 0, YSquare = 0;
 
@@ -50,7 +51,6 @@ class Memory extends Canvas {
 			break;
 		case 3:// Inserting Process
 			ColoringAll(g, back);
-
 			DrawGrid(g);
 			Searching(g);
 			LocalizeProcess(g, Color.green, Integer.parseInt(size_Process), begin_Process[0], begin_Process[1]);
@@ -75,6 +75,7 @@ class Memory extends Canvas {
 			ColoringSquare(g,0,70,Color.green);
 			ColoringSquare(g,0,80,Color.green);
 			break;
+
 
 		}
 
@@ -165,6 +166,17 @@ class Memory extends Canvas {
 
 	}
 
+	public void DrawAuxAllMap(Graphics g) {
+		if (!(Auxlist == null || Auxlist.size() == 0)) {
+			for (String p[] : Auxlist) {
+				// System.out.println("Name:"+p[0]+" Begin:"+p[1]+" Size:"+p[2]);
+				String[] str = p[1].split(",");
+				LocalizeProcess2(g, Color.green, Integer.parseInt(p[2]), Integer.parseInt(str[1]),
+						Integer.parseInt(str[0]));
+			}
+		}
+	}
+	
 	public void DrawAllMap(Graphics g) {
 		if (!(list == null || list.size() == 0)) {
 			for (String p[] : list) {
@@ -183,7 +195,13 @@ class Memory extends Canvas {
 		}
 		list = new ArrayList<>(getlist);
 	}
+	public void SetAuxList(List<String[]> getlist) {
 
+		if (!(Auxlist == null || Auxlist.size() == 0)) {
+			Auxlist.clear();
+		}
+		Auxlist = new ArrayList<>(getlist);
+	}
 	public void Searching(Graphics g) {
 		// begin_Process[0], begin_Process[1] - position index
 		int j = 0;
@@ -191,7 +209,7 @@ class Memory extends Canvas {
 
 			for (j = 0; j < 8; j++) {
 				if ((i == begin_Process[0] && j==begin_Process[1])) {return ;}
-				ColoringAll(g, back);
+				DrawAuxAllMap(g);
 				ColoringSquare(g, i * 10, j * 10, Color.orange);
 				wait(400);
 

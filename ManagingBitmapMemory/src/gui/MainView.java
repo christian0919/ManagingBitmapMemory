@@ -226,6 +226,7 @@ public class MainView extends JFrame {
 					if (checkHole[0] == -1) {
 						canvas.SetOption(2);
 					} else {
+						canvas.SetAuxList(map.listProcess.processList);
 						canvas.begin_Process = map.DispatchProcess(Integer.parseInt(spinner.getValue().toString()),
 								NameProcessField.getText());
 						aux = canvas.begin_Process[0];
