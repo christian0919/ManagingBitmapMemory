@@ -223,7 +223,7 @@ public class MainView extends JFrame {
 		txtVerbose.setForeground(theme.GetLettersColor());
 		
 		JScrollPane scrollPane = new JScrollPane(txtVerbose);
-		scrollPane.setBounds(469, 158, 552, 253);
+		scrollPane.setBounds(483, 184, 538, 191);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		
