@@ -226,13 +226,6 @@ public class MainView extends JFrame {
 		scrollPane.setBounds(483, 184, 538, 191);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
-		
-		
-		
-		
-		
-		
-		
 		btnCreateProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (NameProcessField.getText().equals("") || Integer.parseInt(spinner.getValue().toString()) == 0) {
