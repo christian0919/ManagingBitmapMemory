@@ -221,7 +221,8 @@ public class MainView extends JFrame {
 		JTextArea txtVerbose = new JTextArea();
 		txtVerbose.setBackground(theme.GetBackgroundMap());
 		txtVerbose.setForeground(theme.GetLettersColor());
-		
+        txtVerbose.setEditable(false);
+
 		JScrollPane scrollPane = new JScrollPane(txtVerbose);
 		scrollPane.setBounds(483, 184, 538, 191);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
@@ -232,10 +233,14 @@ public class MainView extends JFrame {
 					System.out.println("incorrect values || blink");
 					canvas.SetOption(1);
 				} else {
+					/*Message*/
+					map.verbose.ClearVerbose();
+					txtVerbose.selectAll();
+					txtVerbose.replaceSelection("");
 					int aux;
 					canvas.SetOption(3);
 					canvas.size_Process = spinner.getValue().toString();
-					int[] checkHole = map.LookForHole(Integer.parseInt(canvas.size_Process));
+					int[] checkHole = map.LookForHole(Integer.parseInt(canvas.size_Process),0);
 					if (checkHole[0] == -1) {
 						canvas.SetOption(2);
 					} else {
@@ -245,8 +250,6 @@ public class MainView extends JFrame {
 						aux = canvas.begin_Process[0];
 						canvas.begin_Process[0] = canvas.begin_Process[1];
 						canvas.begin_Process[1] = aux;
-						System.out.println("size: " + canvas.size_Process + " index: " + canvas.begin_Process[1]
-								+ " position:" + canvas.begin_Process[0]);
 						canvas.SetList(map.listProcess.processList);
 						canvas.repaint();
 						comboBox.addItem(NameProcessField.getText());
@@ -257,14 +260,18 @@ public class MainView extends JFrame {
 				lblTens.setText(map.stringDecimalNumbers(1));
 				lblUnits.setText(map.stringDecimalNumbers(2));
 
-				
+				txtVerbose.setText(map.verbose.GetVerbose());
+
 			}
 		});
 
 		btnDeleteProcess.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				/*Message*/
+				map.verbose.ClearVerbose();
+				txtVerbose.selectAll();
+				txtVerbose.replaceSelection("");
 				String value = (String) comboBox.getSelectedItem();
 				if (value == null || value.isEmpty()) {
 					System.out.println("Error");
@@ -288,6 +295,8 @@ public class MainView extends JFrame {
 				lblHundreds.setText(map.stringDecimalNumbers(0));
 				lblTens.setText(map.stringDecimalNumbers(1));
 				lblUnits.setText(map.stringDecimalNumbers(2));
+				txtVerbose.setText(map.verbose.GetVerbose());
+
 			}
 		});
 

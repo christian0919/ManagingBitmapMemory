@@ -16,7 +16,7 @@ public class ListProcess {
 
 	public void printProcessList() {
 		for (String p[] : processList) {
-			System.out.println("Name:" + p[0] + " Begin:" + p[1] + " Size:" + p[2]);
+			//System.out.println("Name:" + p[0] + " Begin:" + p[1] + " Size:" + p[2]);
 		}
 	}
 
@@ -24,11 +24,9 @@ public class ListProcess {
 		for (int i = 0; i < processList.size(); i++) {
 			if (name.equals(processList.get(i)[0])) {
 				processList.remove(i);
-				System.out.println("Deleted");
 				break;
 			}
 		}
-		System.out.println("No deleted");
 	}
 
 	public void deleteAllList() {

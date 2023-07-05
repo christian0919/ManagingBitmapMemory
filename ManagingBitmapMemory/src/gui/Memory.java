@@ -7,7 +7,6 @@ import java.util.List;
 import bitmapmemorymanagement.Theme;
 
 class Memory extends Canvas {
-	private static final long serialVersionUID = 1L;
 	final int widthSquare = 10;
 	final int heightSquare = 10;
 	final int widthRectangle = 1280;
@@ -118,7 +117,6 @@ class Memory extends Canvas {
 			ColoringAll(g, color);
 			wait(800);
 			ColoringAll(g, back);
-			System.out.println(i);
 			wait(400);
 		}
 		ColoringAll(g, back);
