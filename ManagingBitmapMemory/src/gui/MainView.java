@@ -227,6 +227,14 @@ public class MainView extends JFrame {
 		scrollPane.setBounds(483, 184, 538, 191);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
+		JLabel lblChar = new JLabel("");
+		lblChar.setVerticalAlignment(SwingConstants.TOP);
+		lblChar.setHorizontalAlignment(SwingConstants.LEFT);
+		lblChar.setForeground(Color.BLACK);
+		lblChar.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblChar.setBounds(10, 0, 1330, 21);
+		contentPane.add(lblChar);
+		
 		btnCreateProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (NameProcessField.getText().equals("") || Integer.parseInt(spinner.getValue().toString()) == 0) {
@@ -259,9 +267,8 @@ public class MainView extends JFrame {
 				lblHundreds.setText(map.stringDecimalNumbers(0));
 				lblTens.setText(map.stringDecimalNumbers(1));
 				lblUnits.setText(map.stringDecimalNumbers(2));
-
+				lblChar.setText(map.stringDecimalNumbers(3));
 				txtVerbose.setText(map.verbose.GetVerbose());
-
 			}
 		});
 
@@ -295,6 +302,7 @@ public class MainView extends JFrame {
 				lblHundreds.setText(map.stringDecimalNumbers(0));
 				lblTens.setText(map.stringDecimalNumbers(1));
 				lblUnits.setText(map.stringDecimalNumbers(2));
+				
 				txtVerbose.setText(map.verbose.GetVerbose());
 
 			}

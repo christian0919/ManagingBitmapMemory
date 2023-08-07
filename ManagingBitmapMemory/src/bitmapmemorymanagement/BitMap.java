@@ -148,10 +148,11 @@ public class BitMap {
 	
 	public String stringDecimalNumbers(int op){
 		String aux = "";
-		String hundreds= "";
-		String tens= "";
-		String units= "";
+		String hundreds = "";
+		String tens = "";
+		String units = "";
 		for(byte a : map) {
+
 			//System.out.print(a & 0xFF);
 			aux = ""+(a & 0xFF);
 			if((a & 0xFF)<10){
@@ -165,6 +166,7 @@ public class BitMap {
 			hundreds = hundreds+ " " + aux.charAt(0);
 			tens = tens + " " + aux.charAt(1); 
 			units = units + " " + aux.charAt(2);
+
 			
 			}
 		
