@@ -81,11 +81,17 @@ public class BitMap {
 		int index = 0;
 		int[] ans = new int[2];
 		if (verb ==1 ) {
-		System.out.println("\n**********BUSCANDO HOYO**********");
-		verbose.AddToVerbose("\n**********BUSCANDO HOYO**********");
+		System.out.println("\n**********BUSCANDO HUECO**********");
+		verbose.AddToVerbose("\n**********BUSCANDO HUECO**********");
+
 		}
 		for (int i = 0; i < 128; i++) {
+			if ( verb == 1 ){
+				System.out.println("\n ---Indice " + i+"---" );
+				verbose.AddToVerbose("\n ---Indice" + i+"---");
+			}
 			for (int j = 0; j < 8; j++) {
+
 				if (!BitState(j, i,verb)) {
 					check++;
 					if (check == 1) {
@@ -107,6 +113,7 @@ public class BitMap {
 					check = 0;
 				}
 			}
+
 		}
 		ans[0] = -1;
 		ans[1] = -1;
@@ -118,6 +125,7 @@ public class BitMap {
 	}
 
 	public int[] DispatchProcess(int sizeProcess, String name) {
+		boolean flag = false;
 		int[] positionsHole = new int[2];
 		int[] aux_PositionHole = new int[2];
 		positionsHole = LookForHole(sizeProcess,1);
@@ -133,13 +141,20 @@ public class BitMap {
 			/* Assign process to Bitmap */
 			System.out.println("\n********** Asignando Proceso **********");
 			verbose.AddToVerbose("\n********** Asignando Proceso **********");
+			System.out.println("\n --- Indice " + positionsHole[1] +"---");
+			verbose.AddToVerbose("\n --- Indice " + positionsHole[1] +"---");
 			for (int i = 0; i < sizeProcess; i++) {
+
 				/* bitPosition positionArray */
 				SetBit(positionsHole[0], positionsHole[1]);
 				positionsHole[0]++;
 				if (positionsHole[0] == 8) {
 					positionsHole[0] = 0;
 					positionsHole[1]++;
+					if(i != sizeProcess-1) {
+					System.out.println("\n ---Indice " + positionsHole[1]+"---" );
+					verbose.AddToVerbose("\n ---Indice" + positionsHole[1]+"---");
+					}
 				}
 			}
 		}
@@ -196,14 +211,19 @@ public class BitMap {
 			/* Delete process from the map */
 			System.out.print("\n********** Eliminando Proceso **********");
 			verbose.AddToVerbose("\n********** Eliminando Proceso **********");
+			System.out.println("\n --- Indice " + positionsHole[1] +"---");
+			verbose.AddToVerbose("\n --- Indice " + positionsHole[1] +"---");
 			for (int i = 0; i < listProcess.getProcessSize(position); i++) {
 				/* bitPosition positionArray */
 				UnsetBit(positionsHole[0], positionsHole[1]);
+				
 				
 				positionsHole[0]++;
 				if (positionsHole[0] == 8) {
 					positionsHole[0] = 0;
 					positionsHole[1]++;
+					System.out.println("\n ---Indice " + positionsHole[1]+"---" );
+					verbose.AddToVerbose("\n ---Indice" + positionsHole[1]+"---");
 				}
 			}
 			/* Delete process from the List */
