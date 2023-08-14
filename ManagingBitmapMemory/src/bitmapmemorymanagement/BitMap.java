@@ -203,7 +203,7 @@ public class BitMap {
 		int position = listProcess.ValidateProcessExist(name);
 		//System.out.println("position: " + position);
 		/* Check if process exist */
-		
+		//lest try
 		if (position != -1) {
 			positionsHole = listProcess.getProcessIndex(position);
 
