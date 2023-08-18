@@ -202,12 +202,13 @@ class Memory extends Canvas {
 	}
 	public void Searching(Graphics g) {
 		// begin_Process[0], begin_Process[1] - position index
+		/*
 		int j = 0;
 		for (int i = 0; i <= begin_Process[1]; i++) {
 			for (j = 0; j < 8; j++) {
 				if ((i == begin_Process[0] && j==begin_Process[1])) {return ;}
 				ColoringAll(g, back);
-				DrawAuxAllMap(g);
+				//DrawAuxAllMap(g);
 				ColoringSquare(g, i * 10, j * 10, Color.orange);
 				wait(400);
 				ColoringAll(g, back);
@@ -215,7 +216,23 @@ class Memory extends Canvas {
 			}
 
 		}
-
+		 */
+		int size =  Integer.parseInt(size_Process) ;
+		int cont = 0;
+		int i = 0;
+		int j = 0;
+		int flag = 0;
+		do {
+			if ((i == begin_Process[0] && j==begin_Process[1])) {flag = 1 ;}
+			if (flag == 1) {cont++;}
+			ColoringAll(g, back);
+			DrawAuxAllMap(g);
+			ColoringSquare(g, i * 10, j * 10, Color.orange);
+			wait(400);
+			j++;
+			if (i == 128) {return;}
+			if (j == 8) {i++;j=0;}
+		}while (size != cont);
 	}
 
 }
