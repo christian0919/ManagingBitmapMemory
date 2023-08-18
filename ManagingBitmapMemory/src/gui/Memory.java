@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import bitmapmemorymanagement.BitMap;
 import bitmapmemorymanagement.Theme;
 
 class Memory extends Canvas {
@@ -19,7 +20,7 @@ class Memory extends Canvas {
 	List<String[]> Auxlist;
 	int[] begin_Process = new int[2];
 	int XSquare = 0, YSquare = 0;
-
+	BitMap mapa = new BitMap();
 	Memory(int w, int h, int r, int c) {
 		setSize(width = w, height = h);
 		rows = r;
@@ -217,6 +218,7 @@ class Memory extends Canvas {
 
 		}
 		 */
+		DrawAuxAllMap(g);
 		int size =  Integer.parseInt(size_Process) ;
 		int cont = 0;
 		int i = 0;
@@ -225,19 +227,38 @@ class Memory extends Canvas {
 		int auxI = 0;
 		int auxJ = 0;
 		do {
-			
+
 			
 			if ((i == begin_Process[0] && j==begin_Process[1])) {flag = 1 ;}
 			if (flag == 1) {cont++;}
-			ColoringAll(g, back);
-		DrawAuxAllMap(g);
-		wait(300);
+			//ColoringAll(g, back);
+			//DrawAuxAllMap(g);
+			wait(400);
 			ColoringSquare(g, i * 10, j * 10, Color.orange);
 			wait(400);
+			if(mapa.BitState(auxJ, auxI, 0)){
+				ColoringSquare(g, auxI * 10, auxJ * 10,Color.green);
+				System.out.println("green");
+			}else {
+				ColoringSquare(g, auxI * 10, auxJ * 10, back);
+				System.out.println("back");
+
+			}
 			j++;
 			if (i == 128) {return;}
 			if (j == 8) {i++;j=0;}
+			auxI = i;
+			auxJ = j;
 		}while (size != cont);
 	}
+	
+	public void GetMap(byte[] newMap) {
+		
+		for (int i = 0; i < 128; i++) {                                           
+		     mapa.map[i] = newMap[i];
+		}
+	}
+
+	
 
 }

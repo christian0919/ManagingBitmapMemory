@@ -36,8 +36,7 @@ public class MainView extends JFrame {
 	private BitMap map = new BitMap();
 	public Theme theme = new Theme();
 	public Description indexNumbers = new Description("", "", "");
-
-	/**
+		/**
 	 * Create the frame.
 	 */
 	public MainView() {
@@ -332,6 +331,7 @@ public class MainView extends JFrame {
 					if (checkHole[0] == -1) {
 						canvas.SetOption(2);
 					} else {
+						canvas.GetMap(map.GetMap());
 						canvas.SetAuxList(map.listProcess.processList);
 						canvas.begin_Process = map.DispatchProcess(Integer.parseInt(spinner.getValue().toString()),
 								NameProcessField.getText());

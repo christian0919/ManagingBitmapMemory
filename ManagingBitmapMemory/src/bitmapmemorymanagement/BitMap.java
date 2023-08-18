@@ -2,7 +2,7 @@ package bitmapmemorymanagement;
 
 public class BitMap {
  
-	private byte[] map = new byte[128];
+	public byte[] map = new byte[128];
 	private byte specialBytes[] = { (byte) 1, (byte) 2, (byte) 4, (byte) 8, (byte) 16, (byte) 32, (byte) 64,
 			(byte) 128 };
 	public ListProcess listProcess = new ListProcess();
@@ -231,5 +231,15 @@ public class BitMap {
 		}
 
 	}
+	
+	public byte[] GetMap() 
+	{
+		return map;
+	}
 
+	public void changeMap(byte[] newMap) {
+		for (int i = 0; i < map.length; i++) {                                           
+		     map[i] = newMap[i];
+		}
+	}
 }
