@@ -222,11 +222,16 @@ class Memory extends Canvas {
 		int i = 0;
 		int j = 0;
 		int flag = 0;
+		int auxI = 0;
+		int auxJ = 0;
 		do {
+			
+			
 			if ((i == begin_Process[0] && j==begin_Process[1])) {flag = 1 ;}
 			if (flag == 1) {cont++;}
 			ColoringAll(g, back);
-			DrawAuxAllMap(g);
+		DrawAuxAllMap(g);
+		wait(300);
 			ColoringSquare(g, i * 10, j * 10, Color.orange);
 			wait(400);
 			j++;
