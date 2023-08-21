@@ -55,9 +55,9 @@ public class Bitwise extends JFrame {
 				+ "                                                    18 (10010)\n"
 				+ "                                                          = \n"
 				+ "                                                    27 (11011)");
-		textoPane_1.setForeground(Color.BLACK);
+		textoPane_1.setForeground(theme.GetLettersColor());
 		textoPane_1.setEditable(false);
-		textoPane_1.setBackground(Color.WHITE);
+		textoPane_1.setBackground(theme.GetBackgroundColor());
 		textoPane_1.setBounds(12, 162, 842, 159);
 		contentPane.add(textoPane_1);
 		
@@ -70,13 +70,15 @@ public class Bitwise extends JFrame {
 				+ "                                                    18 (10010)\n"
 				+ "                                                          = \n"
 				+ "                                                    11 (01011)");
-		textoPane_1_1.setForeground(Color.BLACK);
+		textoPane_1_1.setForeground(theme.GetLettersColor());
 		textoPane_1_1.setEditable(false);
-		textoPane_1_1.setBackground(Color.WHITE);
+		textoPane_1_1.setBackground(theme.GetBackgroundColor());
 		textoPane_1_1.setBounds(12, 333, 842, 159);
 		contentPane.add(textoPane_1_1);
 
 		btnNewButton.addActionListener(e ->{ 
+			Shift shift = new Shift();
+			shift.setVisible(true);
 			dispose();
 		});		
 	}

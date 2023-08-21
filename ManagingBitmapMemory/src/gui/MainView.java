@@ -146,7 +146,7 @@ public class MainView extends JFrame {
 			}
 		});
 		lblSettings.setIcon(new ImageIcon(MainView.class.getResource("/img/settings.png")));
-		lblSettings.setBounds(49, 534, 46, 38);
+		lblSettings.setBounds(100, 534, 46, 38);
 		contentPane.add(lblSettings);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -313,6 +313,18 @@ public class MainView extends JFrame {
 		lblNewLabel_9.setBounds(1306, 125, 60, 17);
 		lblNewLabel_9.setForeground(theme.GetLettersColor());
 		contentPane.add(lblNewLabel_9);
+		
+		JLabel lblCredits = new JLabel("");
+		lblCredits.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Creditos creditos = new Creditos();
+				creditos.setVisible(true);
+			}
+		});
+		lblCredits.setIcon(new ImageIcon(MainView.class.getResource("/img/idea.png")));
+		lblCredits.setBounds(57, 534, 35, 38);
+		contentPane.add(lblCredits);
 		
 		btnCreateProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -50,9 +50,9 @@ public class Shift extends JFrame {
 				+ "Ejemplo:\n"
 				+ "                                int num2 = 20; // 10100\n"
 				+ "                                int shift_right = num2 >> 2; // 00101 (5)");
-		textoPane_1.setForeground(Color.BLACK);
+		textoPane_1.setForeground(theme.GetLettersColor());
 		textoPane_1.setEditable(false);
-		textoPane_1.setBackground(Color.WHITE);
+		textoPane_1.setBackground(theme.GetBackgroundColor());
 		textoPane_1.setBounds(12, 162, 842, 159);
 		contentPane.add(textoPane_1);
 

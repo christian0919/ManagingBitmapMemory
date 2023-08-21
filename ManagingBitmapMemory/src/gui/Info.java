@@ -76,6 +76,8 @@ public class Info extends JFrame {
 		canvas.repaint();
 
 		btnNewButton.addActionListener(e ->{ 
+			Bitwise bitwise = new Bitwise();
+			bitwise.setVisible(true);
 			dispose();
 		});		
 	}
