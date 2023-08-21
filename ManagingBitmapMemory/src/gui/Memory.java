@@ -71,12 +71,10 @@ class Memory extends Canvas {
 			ColoringSquare(g,0,10,Color.green);
 			
 			ColoringSquare(g,0,40,Color.green);
-			
+	
 			ColoringSquare(g,0,70,Color.green);
 			ColoringSquare(g,0,80,Color.green);
 			break;
-
-
 		}
 
 	}
@@ -162,7 +160,6 @@ class Memory extends Canvas {
 				index += 10;
 			}
 		}
-
 	}
 
 	public void DrawAuxAllMap(Graphics g) {
@@ -195,29 +192,13 @@ class Memory extends Canvas {
 		list = new ArrayList<>(getlist);
 	}
 	public void SetAuxList(List<String[]> getlist) {
-
 		if (!(Auxlist == null || Auxlist.size() == 0)) {
 			Auxlist.clear();
 		}
 		Auxlist = new ArrayList<>(getlist);
 	}
 	public void Searching(Graphics g) {
-		// begin_Process[0], begin_Process[1] - position index
-		/*
-		int j = 0;
-		for (int i = 0; i <= begin_Process[1]; i++) {
-			for (j = 0; j < 8; j++) {
-				if ((i == begin_Process[0] && j==begin_Process[1])) {return ;}
-				ColoringAll(g, back);
-				//DrawAuxAllMap(g);
-				ColoringSquare(g, i * 10, j * 10, Color.orange);
-				wait(400);
-				ColoringAll(g, back);
-				DrawAuxAllMap(g);
-			}
 
-		}
-		 */
 		DrawAuxAllMap(g);
 		int size =  Integer.parseInt(size_Process) ;
 		int cont = 0;
@@ -227,22 +208,16 @@ class Memory extends Canvas {
 		int auxI = 0;
 		int auxJ = 0;
 		do {
-
-			
 			if ((i == begin_Process[0] && j==begin_Process[1])) {flag = 1 ;}
 			if (flag == 1) {cont++;}
-			//ColoringAll(g, back);
-			//DrawAuxAllMap(g);
-			//wait(100);
 			ColoringSquare(g, i * 10, j * 10, Color.orange);
-			wait(260);
+			wait(230);
 			if(mapa.BitState(auxJ, auxI, 0)){
 				ColoringSquare(g, auxI * 10, auxJ * 10,Color.green);
 				System.out.println("green");
 			}else {
 				ColoringSquare(g, auxI * 10, auxJ * 10, back);
 				System.out.println("back");
-
 			}
 			j++;
 			if (i == 128) {return;}
