@@ -233,9 +233,9 @@ class Memory extends Canvas {
 			if (flag == 1) {cont++;}
 			//ColoringAll(g, back);
 			//DrawAuxAllMap(g);
-			wait(400);
+			//wait(100);
 			ColoringSquare(g, i * 10, j * 10, Color.orange);
-			wait(400);
+			wait(260);
 			if(mapa.BitState(auxJ, auxI, 0)){
 				ColoringSquare(g, auxI * 10, auxJ * 10,Color.green);
 				System.out.println("green");
